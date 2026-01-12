@@ -15,11 +15,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # =========================
 
-import os  # Solo si no está importado todavía
+import os
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "clave_por_defecto_para_local")
+
 DEBUG = os.environ.get("DEBUG", "False") == "True"
-ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOST", "localhost")]
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(",")
 
 
 
