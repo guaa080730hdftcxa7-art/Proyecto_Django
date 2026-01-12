@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="mb-4">
+        <i class="bi bi-pencil-square"></i> Cita Médica
+    </h2>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Error:</strong>
+            {{ form.errors }}
+        </div>
+        {% endif %}
+
+        <div class="mb-3">
+            {{ form.paciente.label_tag }}
+            {{ form.paciente }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.doctor.label_tag }}
+            {{ form.doctor }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.fecha.label_tag }}
+            {{ form.fecha }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.hora.label_tag }}
+            {{ form.hora }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.motivo.label_tag }}
+            {{ form.motivo }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Guardar
+        </button>
+
+        <a href="{% url 'listar' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </form>
+
+</div>
+{% endblock %}
+
